@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const PizzaSchema = new Schema(
   {
@@ -14,13 +14,13 @@ const PizzaSchema = new Schema(
     },
     size: {
       type: String,
-      default: "Large",
+      default: 'Large',
     },
     toppings: [],
     comments: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Comment",
+        ref: 'Comment',
       },
     ],
   },
@@ -33,10 +33,10 @@ const PizzaSchema = new Schema(
 );
 
 // get total count of comments and replies on retrieval
-PizzaSchema.virtual("commentCount").get(function () {
-  return this.comment.length;
+PizzaSchema.virtual('commentCount').get(function () {
+  return this.comments.length;
 });
 
-const Pizza = model("Pizza", PizzaSchema);
+const Pizza = model('Pizza', PizzaSchema);
 
 module.exports = Pizza;
