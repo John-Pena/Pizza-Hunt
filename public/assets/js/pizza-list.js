@@ -1,4 +1,5 @@
 const $pizzaList = document.querySelector('#pizza-list');
+
 const getPizzaList = () => {
   fetch('/api/pizzas')
     .then(response => response.json())
@@ -7,8 +8,8 @@ const getPizzaList = () => {
     })
     .catch(err => {
       console.log(err);
-    })
-}
+    });
+};
 
 const printPizza = ({ _id, pizzaName, toppings, size, commentCount, createdBy, createdAt }) => {
   const pizzaCard = `
