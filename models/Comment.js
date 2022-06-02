@@ -11,8 +11,8 @@ const ReplySchema = new Schema(
     replyBody: {
       type: String
     },
-    writtneBy: {
-      type:String
+    writtenBy: {
+      type: String
     },
     createdAt: {
       type: Date,
@@ -40,7 +40,7 @@ const CommentSchema = new Schema(
       default: Date.now,
       get: createdAtVal => dateFormat(createdAtVal)
     },
-    // associates replies schema with comments
+    // use ReplySchema to validate data for a reply
     replies: [ReplySchema]
   },
   {
@@ -48,7 +48,6 @@ const CommentSchema = new Schema(
       virtuals: true,
       getters: true
     },
-    // prevents virtuals from creating duplicate of _id as 'id'
     id: false
   }
 );
